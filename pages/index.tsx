@@ -1,4 +1,3 @@
-import { useReducer } from "react";
 import { Switch } from "@headlessui/react";
 import { useTheme } from "next-themes";
 import Head from "next/head";
@@ -26,8 +25,11 @@ export default function Home() {
             checked={isDarkTheme}
             onChange={() => setTheme(isDarkTheme ? "light" : "dark")}
             className={`${
-              isDarkTheme ? "bg-blue-600" : "bg-gray-200"
-            } relative inline-flex items-center h-6 rounded-full w-11`}
+              isDarkTheme ? "bg-rose-500" : "bg-gray-300"
+            } relative inline-flex items-center h-6 rounded-full w-11
+            focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-100
+            dark:focus:ring-offset-gray-800 focus:ring-2 
+            dark:focus:ring-rose-500 focus:ring-gray-300`}
           >
             <span className="sr-only">Toggle theme</span>
             <span
