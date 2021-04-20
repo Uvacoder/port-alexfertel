@@ -1,9 +1,16 @@
+import { useEffect, useState } from "react";
 import { Switch } from "@headlessui/react";
 import { useTheme } from "next-themes";
 import Head from "next/head";
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
+
   const isDarkTheme = theme === "dark";
 
   return (
