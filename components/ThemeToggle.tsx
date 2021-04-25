@@ -17,13 +17,13 @@ export default function ThemeToggle() {
       checked={isDarkTheme}
       onChange={() => setTheme(isDarkTheme ? "light" : "dark")}
       className="dark:text-yellow-400 text-gray-800
-    h-6 w-6 focus:outline-none focus-visible:outline-none rounded-full focus-visible:ring-2 
+    focus:outline-none focus-visible:outline-none rounded-full focus-visible:ring-2 
     dark:focus-visible:ring-yellow-400 focus-visible:ring-gray-800"
     >
       <span className="sr-only">Toggle theme</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6"
+        className="h-8 w-8"
         viewBox="0 0 20 20"
         fill="currentColor"
       >

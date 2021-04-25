@@ -9,7 +9,7 @@ export default function Home() {
       </Head>
 
       <main className="flex items-center flex-col flex-1">
-        <section className="flex w-full justify-end pt-2 pr-2">
+        <section className="flex w-full justify-end pt-4 pr-6">
           <ThemeToggle />
         </section>
 
