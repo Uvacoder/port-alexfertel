@@ -3,7 +3,7 @@ import ThemeToggle from "../components/ThemeToggle";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen dark:bg-coolGray-900 bg-gray-100 transition-all ease-in-out duration-75">
+    <div className="flex antialiased min-h-screen dark:bg-coolGray-900 bg-coolGray-50 transition-all ease-in-out duration-75">
       <Head>
         <title>Alexander González</title>
       </Head>
@@ -13,12 +13,19 @@ export default function Home() {
           <ThemeToggle />
         </section>
 
-        <section className="flex items-center pl-16 h-full w-full">
-          <h1 className="text-9xl text-gray-800 dark:text-gray-100">
+        <section className="flex justify-between sm:items-center px-16 h-full w-full text-gray-800 dark:text-coolGray-50">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-9xl">
             <span>Hello!</span>
             <br />
             <span>I'm Alex.</span>
           </h1>
+          <div className="flex justify-between max-w-sm w-full max-h-56 border border-dashed">
+            <div className="h-full w-px bg-gray-100" />
+            <p className="sm:text-xl">
+              Hehehe The quick brown fox jumps over the lazy dog
+            </p>
+            <div className="h-full w-px bg-gray-100" />
+          </div>
         </section>
       </main>
     </div>
