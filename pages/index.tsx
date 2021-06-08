@@ -21,9 +21,7 @@ export default function Home() {
           </h1>
           <div className="flex justify-between max-w-sm w-full max-h-56 border border-dashed">
             <div className="h-full w-px bg-gray-100" />
-            <p className="sm:text-xl">
-              Hehehe The quick brown fox jumps over the lazy dog
-            </p>
+            <p className="sm:text-xl">This site is currently being revamped!</p>
             <div className="h-full w-px bg-gray-100" />
           </div>
         </section>
