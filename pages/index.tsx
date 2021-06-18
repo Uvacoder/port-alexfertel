@@ -13,17 +13,20 @@ export default function Home() {
           <ThemeToggle />
         </section>
 
-        <section className="flex justify-between sm:items-center px-16 h-full w-full text-gray-800 dark:text-coolGray-50">
-          <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-9xl">
-            <span>Hello!</span>
+        <section className="flex justify-center sm:items-center px-16 h-full w-full text-gray-800 dark:text-coolGray-50">
+          <h1 className="text-lg sm:text-xl md:text-2xl lg:text-4xl">
+            <span>
+              Hello, <span className="text-rose-500">I'm Alex</span>. I'm a UI
+              Developer from Cuba,
+            </span>
             <br />
-            <span>I'm Alex.</span>
+            <span>
+              currently working at{" "}
+              <a href="https://swagup.com" rel="noopener noreferrer">
+                Swag Up
+              </a>
+            </span>
           </h1>
-          <div className="flex justify-between max-w-sm w-full max-h-56 border border-dashed">
-            <div className="h-full w-px bg-gray-100" />
-            <p className="sm:text-xl">This site is currently being revamped!</p>
-            <div className="h-full w-px bg-gray-100" />
-          </div>
         </section>
       </main>
     </div>
