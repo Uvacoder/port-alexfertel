@@ -23,7 +23,7 @@ export default function ThemeToggle() {
       <span className="sr-only">Toggle theme</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-8 w-8"
+        className="h-6 w-6"
         viewBox="0 0 20 20"
         fill="currentColor"
       >

@@ -8,6 +8,9 @@ module.exports = {
   theme: {
     extend: {
       colors,
+      animation: {
+        "spin-slow": "spin 20s linear infinite",
+      },
     },
   },
   variants: {
