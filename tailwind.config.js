@@ -8,6 +8,10 @@ module.exports = {
   theme: {
     extend: {
       colors,
+      fontFamily: {
+        sans: ["Quicksand", ...defaultTheme.fontFamily.sans],
+        pacifico: ["Pacifico"],
+      },
     },
   },
   variants: {

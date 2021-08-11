@@ -21,7 +21,7 @@ const Home = () => (
           currently working at{" "}
           <a
             href="https://swagup.com"
-            className="text-indigo-400"
+            className="font-pacifico text-indigo-400"
             target="_blank"
             rel="noopener noreferrer"
           >
