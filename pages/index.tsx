@@ -5,7 +5,9 @@ import ThemeToggle from "../components/ThemeToggle";
 const Home = () => (
   <div className="flex min-h-screen antialiased dark:bg-coolGray-900 bg-coolGray-100 transition-colors duration-75">
     <Head>
-      <title>Alexander González</title>
+      <title>
+        Alexander González - Computer Scientist, UI Developer, Generative Artist
+      </title>
     </Head>
 
     <main className="relative flex flex-col items-center flex-1 text-gray-700 dark:text-coolGray-100">
