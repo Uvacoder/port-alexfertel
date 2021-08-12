@@ -3,10 +3,11 @@ import BouncingArrow from "../components/BouncingArrow";
 import ThemeToggle from "../components/ThemeToggle";
 
 const Home = () => (
-  <div className="flex min-h-screen antialiased dark:bg-coolGray-900 bg-coolGray-100 transition-colors duration-75">
+  <div className="flex min-h-screen dark:bg-coolGray-900 bg-coolGray-100 transition-colors duration-75">
     <Head>
       <title>
-        Alexander González - Computer Scientist, UI Developer, Generative Artist
+        Alexander González - Computer Scientist, UI Developer, Generative
+        Artist.
       </title>
     </Head>
 
