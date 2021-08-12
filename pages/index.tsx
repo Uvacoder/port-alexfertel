@@ -3,7 +3,7 @@ import BouncingArrow from "../components/BouncingArrow";
 import ThemeToggle from "../components/ThemeToggle";
 
 const Home = () => (
-  <div className="flex min-h-screen antialiased dark:bg-coolGray-900 bg-coolGray-50 transition-colors duration-75">
+  <div className="flex min-h-screen antialiased dark:bg-coolGray-900 bg-coolGray-100 transition-colors duration-75">
     <Head>
       <title>Alexander González</title>
     </Head>
@@ -14,9 +14,9 @@ const Home = () => (
       </section>
 
       <section className="relative flex justify-center w-full h-full px-16 sm:items-center">
-        <h1 className="relative z-10 text-xl font-pacifico sm:text-xl md:text-2xl lg:text-4xl">
+        <h1 className="relative z-10 text-xl font-pacifico sm:text-2xl md:text-3xl lg:text-5xl">
           Hello, I'm{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-br from-rose-500 to-blue-600">
+          <span className="text-transparent bg-clip-text bg-gradient-to-br from-red-500 to-blue-500">
             Alex
           </span>
           .
