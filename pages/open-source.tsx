@@ -34,7 +34,7 @@ export async function getStaticProps() {
   }
   return {
     props: { repos },
-    revalidate: 1,
+    revalidate: 60,
   };
 }
 
@@ -44,7 +44,7 @@ const OpenSource = ({ repos }) => {
   return (
     <div className="grid place-items-center">
       {repos.map((repo) => (
-        <pre>{JSON.stringify(repo.full_name, null, 2)}</pre>
+        <pre key={repo}>{JSON.stringify(repo.full_name, null, 2)}</pre>
       ))}
       {public_repos.length}
       {"\n"}
