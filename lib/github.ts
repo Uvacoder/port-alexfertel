@@ -29,35 +29,37 @@ const fetchUserInfo = (token: string) =>
     },
     data: JSON.stringify({
       query: `query {
-        user(login: "alexfertel") {
-          name
-          login
-          contributionsCollection {
-            totalCommitContributions
-            restrictedContributionsCount
-          }
-          repositoriesContributedTo(first: 1, contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]) {
-            totalCount
-          }
-          pullRequests(first: 1) {
-            totalCount
-          }
-          issues(first: 1) {
-            totalCount
-          }
-          followers {
-            totalCount
-          }
-          repositories(first: 100, ownerAffiliations: OWNER, orderBy: {direction: DESC, field: STARGAZERS}) {
-            totalCount
-            nodes {
-              stargazers {
-                totalCount
-              }
-            }
-          }
+user(login: "alexfertel") {
+    name
+    login
+    contributionsCollection {
+      totalCommitContributions
+      restrictedContributionsCount
+    }
+    repositoriesContributedTo(first: 100, contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]) {
+      totalCount
+      nodes {
+        nameWithOwner
+        stargazerCount
+      }
+    }
+    pullRequests(first: 10, orderBy: {direction: DESC, field: CREATED_AT}) {
+      totalCount
+      nodes {
+        title
+        baseRepository {
+          stargazerCount
+          description
+          nameWithOwner
+          url
         }
-      }`,
+      }
+    }
+    followers {
+      totalCount
+    }
+  }
+}`,
     }),
   }).then((response) => response.data);
 
