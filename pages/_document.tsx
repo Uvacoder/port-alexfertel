@@ -48,7 +48,7 @@ class MyDocument extends Document {
           <meta property="og:description" content={meta.description} />
           <meta property="og:title" content={meta.title} />
         </Head>
-        <body className="antialiased">
+        <body className="antialiased bg-gray-100 dark:bg-gray-900">
           <Main />
           <NextScript />
         </body>

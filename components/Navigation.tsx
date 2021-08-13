@@ -1,0 +1,37 @@
+import * as React from "react";
+import ThemeToggle from "../components/ThemeToggle";
+import Link from "next/link";
+
+const HomeIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+    />
+  </svg>
+);
+
+const Navigation = () => {
+  return (
+    <div className="absolute px-4 pt-4 top-0 left-0 right-0 flex justify-between">
+      <Link href="/">
+        <a className="transition-all hover:scale-110 duration-100 ease-out">
+          <HomeIcon className="h-5 w-5 text-red-500 dark:text-coolGray-100" />
+        </a>
+      </Link>
+      <div className="z-10">
+        <ThemeToggle />
+      </div>
+    </div>
+  );
+};
+
+export default Navigation;
