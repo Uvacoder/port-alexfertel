@@ -14,6 +14,7 @@ export default function ThemeToggle() {
 
   return (
     <Switch
+      aria-label="Toggle Dark Mode"
       checked={isDarkTheme}
       onChange={() => setTheme(isDarkTheme ? "light" : "dark")}
       className="text-yellow-400 dark:text-gray-300
