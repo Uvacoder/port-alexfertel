@@ -1,6 +1,6 @@
 import Head from "next/head";
-import BouncingArrow from "../components/BouncingArrow";
-import Navigation from "../components/Navigation";
+import BouncingArrow from "../components/global/BouncingArrow";
+import Navigation from "../components/global/Navigation";
 import { Transition } from "@headlessui/react";
 
 const Home = () => (

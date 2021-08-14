@@ -1,6 +1,6 @@
 import * as React from "react";
 import githubApi from "../lib/github";
-import Navigation from "../components/Navigation";
+import Navigation from "../components/global/Navigation";
 
 export async function getStaticProps() {
   const token = process.env.GITHUB_TOKEN;
@@ -14,7 +14,7 @@ export async function getStaticProps() {
   return {
     props: {
       count: responses[1].total_count,
-      userInfo: responses[2].data,
+      userInfo: responses[2].data.user,
     },
     revalidate: 60,
   };
@@ -38,11 +38,15 @@ export async function getStaticProps() {
 //       totalCount
 //       nodes {
 //         title
+//         state
 //         baseRepository {
 //           stargazerCount
 //           description
 //           nameWithOwner
 //           url
+//           forks {
+//             totalCount
+//           }
 //         }
 //       }
 //     }
@@ -52,6 +56,8 @@ export async function getStaticProps() {
 //   }
 
 const OpenSource = ({ repos, count, userInfo }) => {
+  console.log(userInfo);
+  const pullRequests = userInfo.pullRequests.nodes;
   return (
     <div className="relative inset-0 flex min-h-screen">
       <Navigation />
@@ -80,7 +86,9 @@ const OpenSource = ({ repos, count, userInfo }) => {
             <h2 className="font-pacifico text-xl text-red-500">
               Pull Requests
             </h2>
-            <div></div>
+            {pullRequests.map((pr) => (
+              <div key={pr.title}>{pr.title}</div>
+            ))}
           </section>
           <section>
             <h2 className="font-pacifico text-xl text-red-500">Stats</h2>
