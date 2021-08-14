@@ -1,9 +1,9 @@
 import * as React from "react";
 import Head from "next/head";
+import { motion } from "framer-motion";
 import Navigation from "../components/global/Navigation";
 import Link from "next/link";
 import { ArrowDownIcon } from "../components/icons";
-import { motion } from "framer-motion";
 import AnimatedText from "../components/global/AnimatedText";
 
 const Home = () => {
@@ -58,12 +58,14 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section
-        id="second-section"
-        className="flex min-h-screen transition-colors duration-75"
-      >
-        <h2>Personal Changelog</h2>
-      </section>
+      {/*
+            <section
+            id="second-section"
+            className="flex min-h-screen transition-colors duration-75"
+            >
+            <h2>Personal Changelog</h2>
+            </section>
+        */}
     </div>
   );
 };
