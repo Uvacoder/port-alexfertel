@@ -1,32 +1,16 @@
 import * as React from "react";
 import Head from "next/head";
-import { motion, useViewportScroll, useTransform } from "framer-motion";
-import BouncingArrow from "../components/global/BouncingArrow";
 import Navigation from "../components/global/Navigation";
 import Link from "next/link";
+import { ArrowDownIcon } from "../components/icons";
 
 const Home = () => {
-  const { scrollYProgress } = useViewportScroll();
-  const scale = useTransform(scrollYProgress, [0, 1], [0.2, 2]);
-
-  console.log(scrollYProgress);
-
   return (
     <div className="flex flex-col flex-1">
       <Head>
         <title>Alexander González - UI Developer, Generative Artist.</title>
       </Head>
 
-      <motion.div
-        className="fixed bottom-2 right-2 bg-black w-4 h-4"
-        style={{ scale }}
-      >
-        <motion.div
-          style={{
-            scaleY: scrollYProgress,
-          }}
-        />
-      </motion.div>
       <section
         id="first-section"
         className="flex min-h-screen transition-colors duration-75"
@@ -49,7 +33,7 @@ const Home = () => {
           <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center pb-4">
             <Link href="/#second-section">
               <a>
-                <BouncingArrow />
+                <ArrowDownIcon className="h-6 w-6 animate-bounce" />
               </a>
             </Link>
           </div>
