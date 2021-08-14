@@ -24,6 +24,10 @@
   transform: scaleX(1);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* quicksand-300 - latin */
 /* @font-face { */
 /*   font-family: 'Quicksand'; */
