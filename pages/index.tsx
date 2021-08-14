@@ -12,7 +12,7 @@ const Home = () => (
       <div className="relative flex flex-col items-center flex-1 text-gray-700 dark:text-coolGray-100">
         <Navigation />
 
-        <main className="relative flex justify-center w-full h-full px-16 sm:items-center">
+        <main className="relative flex justify-center w-full h-full px-4 sm:px-16 items-center">
           <Transition
             appear
             show

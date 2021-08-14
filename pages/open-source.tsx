@@ -55,13 +55,13 @@ const OpenSource = ({ repos, count, userInfo }) => {
   return (
     <div className="relative inset-0 flex min-h-screen">
       <Navigation />
-      <div className="px-10 flex flex-1 flex-col text-center">
+      <div className="px-4 sm:px-10 flex flex-1 flex-col text-center">
         <h1 className="pt-10 text-5xl text-gray-700 dark:text-coolGray-100 font-pacifico">
           Open Source
         </h1>
 
         <div className="items-center">
-          <p className="pt-6 text-lg text-gray-700 dark:text-coolGray-300 max-w-lg m-auto">
+          <p className="pt-6 text-lg text-gray-700 dark:text-coolGray-300 sm:max-w-lg m-auto">
             I love open source! Here are my latest contributions. You can check
             them out in more detail in my{" "}
             <a
@@ -75,7 +75,7 @@ const OpenSource = ({ repos, count, userInfo }) => {
           </p>
         </div>
 
-        <div className="pt-20 text-center divide-dashed divide-x-2 divide-red-500 grid grid-cols-2 text-gray-700 dark:text-coolGray-100">
+        <div className="pt-20 text-center divide-dotted divide-y-2 sm:divide-x-2 sm:divide-y-0 divide-red-500 grid grid-cols-1 sm:grid-cols-2 text-gray-700 dark:text-coolGray-100">
           <section>
             <h2 className="font-pacifico text-xl text-red-500">
               Pull Requests
