@@ -1,6 +1,7 @@
 import * as React from "react";
 import githubApi from "../lib/github";
 import Navigation from "../components/global/Navigation";
+import { InfoIcon, StarIcon } from "../components/icons";
 
 export async function getStaticProps() {
   const token = process.env.GITHUB_TOKEN;
@@ -57,11 +58,18 @@ export async function getStaticProps() {
 
 const OpenSource = ({ repos, count, userInfo }) => {
   console.log(userInfo);
+
   const pullRequests = userInfo.pullRequests.nodes;
+  const stargazerCount = userInfo.repositoriesContributedTo.nodes.reduce(
+    (sum: number, repo: { stargazerCount: number }) =>
+      sum + repo.stargazerCount,
+    0
+  );
+
   return (
     <div className="relative inset-0 flex min-h-screen">
       <Navigation />
-      <div className="px-4 sm:px-10 flex flex-1 flex-col text-center">
+      <div className="max-w-xs sm:max-w-xl lg:max-w-5xl mx-auto flex flex-1 flex-col text-center">
         <h1 className="pt-10 text-5xl text-gray-700 dark:text-coolGray-100 font-pacifico">
           Open Source
         </h1>
@@ -81,7 +89,40 @@ const OpenSource = ({ repos, count, userInfo }) => {
           </p>
         </div>
 
-        <div className="pt-20 text-center divide-dotted divide-y-2 sm:divide-x-2 sm:divide-y-0 divide-red-500 grid grid-cols-1 sm:grid-cols-2 text-gray-700 dark:text-coolGray-100">
+        <div className="pt-10 grid grid-cols-1 sm:grid-cols-3 gap-x-2">
+          <div className="flex justify-center items-center bg-gray-50 shadow-sm rounded-md">
+            <div className="flex px-6 py-6 justify-between items-center text-2xl">
+              <div className="flex items-center">
+                <StarIcon className="h-8 w-8 text-blue-500" />
+
+                <p>Stargazers:</p>
+              </div>
+              <p className="">{stargazerCount}*</p>
+            </div>
+          </div>
+          <div className="flex justify-center items-center">
+            <div className="flex justify-between">
+              <StarIcon className="h-5 w-5" />
+
+              <div className="">
+                Stargazers: <span>{stargazerCount}</span>
+                <InfoIcon className="h-5 w-5" />
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center items-center">
+            <div className="flex justify-between">
+              <StarIcon className="h-5 w-5" />
+
+              <div className="">
+                Stargazers: <span>{stargazerCount}</span>
+                <InfoIcon className="h-5 w-5" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-20 text-center grid grid-cols-1 lg:grid-cols-2 text-gray-700 dark:text-coolGray-100">
           <section>
             <h2 className="font-pacifico text-xl text-red-500">
               Pull Requests
