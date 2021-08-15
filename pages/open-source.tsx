@@ -1,62 +1,39 @@
 import * as React from "react";
 import githubApi from "../lib/github";
 import Navigation from "../components/global/Navigation";
-import { InfoIcon, StarIcon } from "../components/icons";
+import { BookIcon, StarIcon } from "../components/icons";
+import {
+  aggregateContributionChunks,
+  DateRange,
+  getYearRangesSinceJoining,
+} from "../lib/utils";
+import { PullRequestIcon } from "../components/icons/PullRequestIcon";
 
 export async function getStaticProps() {
   const token = process.env.GITHUB_TOKEN;
 
-  const responses = await Promise.all([
-    githubApi.fetchRepoCount(token),
-    githubApi.fetchCommitCount(token),
+  const ranges = getYearRangesSinceJoining();
+  const [userInfo, ...contributionChunks] = await Promise.all([
     githubApi.fetchUserInfo(token),
+    ...ranges.map((range: DateRange) =>
+      githubApi.fetchContributionsCount(token, range)
+    ),
   ]);
 
   return {
     props: {
-      count: responses[1].total_count,
-      userInfo: responses[2].data.user,
+      contributions: aggregateContributionChunks(
+        contributionChunks.map(
+          (chunk) => chunk.data.user.contributionsCollection
+        )
+      ),
+      userInfo: userInfo.data.user,
     },
     revalidate: 60,
   };
 }
 
-// user(login: "alexfertel") {
-//     name
-//     login
-//     contributionsCollection {
-//       totalCommitContributions
-//       restrictedContributionsCount
-//     }
-//     repositoriesContributedTo(first: 100, contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]) {
-//       totalCount
-//       nodes {
-//         nameWithOwner
-//         stargazerCount
-//       }
-//     }
-//     pullRequests(first: 10, orderBy: {direction: DESC, field: CREATED_AT}) {
-//       totalCount
-//       nodes {
-//         title
-//         state
-//         baseRepository {
-//           stargazerCount
-//           description
-//           nameWithOwner
-//           url
-//           forks {
-//             totalCount
-//           }
-//         }
-//       }
-//     }
-//     followers {
-//       totalCount
-//     }
-//   }
-
-const OpenSource = ({ repos, count, userInfo }) => {
+const OpenSource = ({ contributions, userInfo }) => {
   console.log(userInfo);
 
   const pullRequests = userInfo.pullRequests.nodes;
@@ -70,70 +47,84 @@ const OpenSource = ({ repos, count, userInfo }) => {
     <div className="relative inset-0 flex min-h-screen">
       <Navigation />
       <div className="max-w-xs sm:max-w-xl lg:max-w-5xl mx-auto flex flex-1 flex-col text-center">
-        <h1 className="pt-10 text-5xl text-gray-700 dark:text-coolGray-100 font-pacifico">
+        <h1 className="pt-20 text-5xl text-gray-700 dark:text-coolGray-100 font-pacifico">
           Open Source
         </h1>
 
         <div className="items-center">
-          <p className="pt-6 text-lg text-gray-700 dark:text-coolGray-300 sm:max-w-lg m-auto">
-            I love open source! Here are my latest contributions. You can check
-            them out in more detail in my{" "}
+          <p className="pt-6 text-2xl text-gray-700 dark:text-coolGray-300 sm:max-w-lg m-auto">
+            I love contributing to open source! If you want know more check out
+            my{" "}
             <a
               href="https://github.com/alexfertel"
               rel="noopener noreferrer"
               className="custom-underline inline-block transition-all transform hover:scale-[1.05] duration-500 ease-out text-transparent font-semibold bg-clip-text bg-gradient-to-r from-red-500 to-blue-500"
             >
               GitHub
-            </a>{" "}
-            profile.
+            </a>
+            .
           </p>
         </div>
 
-        <div className="pt-10 grid grid-cols-1 sm:grid-cols-3 gap-x-2">
-          <div className="flex justify-center items-center bg-gray-50 shadow-sm rounded-md">
-            <div className="flex px-6 py-6 justify-between items-center text-2xl">
+        <div className="pt-10 grid grid-cols-1 lg:grid-cols-3 lg:gap-x-4 gap-y-2">
+          <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
+            <div className="flex w-full p-4 lg:p-6 justify-between items-center text-lg lg:text-xl">
               <div className="flex items-center">
-                <StarIcon className="h-8 w-8 text-blue-500" />
+                <StarIcon className="h-6 w-6 text-blue-500" />
 
-                <p>Stargazers:</p>
+                <p className="pl-2 text-coolGray-700">Stargazers:</p>
               </div>
-              <p className="">{stargazerCount}*</p>
+              <p>
+                <span className="text-blue-500">{stargazerCount}</span>*
+              </p>
             </div>
           </div>
-          <div className="flex justify-center items-center">
-            <div className="flex justify-between">
-              <StarIcon className="h-5 w-5" />
 
-              <div className="">
-                Stargazers: <span>{stargazerCount}</span>
-                <InfoIcon className="h-5 w-5" />
+          <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
+            <div className="flex w-full p-4 lg:p-6 justify-between items-center text-lg lg:text-xl">
+              <div className="flex items-center">
+                <PullRequestIcon className="h-6 w-6 text-blue-500" />
+
+                <p className="pl-2 text-coolGray-700">Pull Requests:</p>
               </div>
+              <p>
+                <span className="text-blue-500">
+                  {userInfo.pullRequests.totalCount}
+                </span>
+              </p>
             </div>
           </div>
-          <div className="flex justify-center items-center">
-            <div className="flex justify-between">
-              <StarIcon className="h-5 w-5" />
 
-              <div className="">
-                Stargazers: <span>{stargazerCount}</span>
-                <InfoIcon className="h-5 w-5" />
+          <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
+            <div className="flex w-full p-4 lg:p-6 justify-between items-center text-lg lg:text-xl">
+              <div className="flex items-center">
+                <BookIcon className="h-6 w-6 text-blue-500" />
+
+                <p className="pl-2 text-coolGray-700">Contributions:</p>
               </div>
+              <p>
+                <span className="text-blue-500">{contributions}</span>*
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="pt-20 text-center grid grid-cols-1 lg:grid-cols-2 text-gray-700 dark:text-coolGray-100">
-          <section>
-            <h2 className="font-pacifico text-xl text-red-500">
-              Pull Requests
-            </h2>
-            {pullRequests.map((pr) => (
-              <div key={pr.title}>{pr.title}</div>
-            ))}
-          </section>
-          <section>
-            <h2 className="font-pacifico text-xl text-red-500">Stats</h2>
-          </section>
+        <div className="pt-10 text-left grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4 text-gray-700 dark:text-coolGray-100">
+          <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
+            <div className="w-full p-6 justify-between items-center text-xl">
+              <h2 className="font-pacifico text-xl text-blue-500">
+                Pull Requests
+              </h2>
+              {pullRequests.map((pr) => (
+                <div key={pr.title}>{pr.title}</div>
+              ))}
+            </div>
+          </div>
+          <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
+            <div className="w-full p-6 justify-between items-center text-xl">
+              <h2 className="font-pacifico text-xl text-blue-500">Stats</h2>
+            </div>
+          </div>
         </div>
       </div>
     </div>
