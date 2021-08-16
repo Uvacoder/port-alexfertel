@@ -108,18 +108,26 @@ query {
     }
     pullRequests(first: 10, orderBy: {direction: DESC, field: CREATED_AT}) {
       totalCount
-      nodes {
-        title
-        baseRepository {
-          stargazerCount
-          description
-          nameWithOwner
-          url
+    }
+  }
+  search(first: 10, type: ISSUE, query: "is:pr author:alexfertel archived:false sort:updated-desc is:public") {
+    edges {
+      node {
+        ... on PullRequest {
+          title
+          state
+          id
+          baseRepository {
+            stargazerCount
+            description
+            nameWithOwner
+            url
+            forks {
+              totalCount
+            }
+          }
         }
       }
-    }
-    followers {
-      totalCount
     }
   }
 }`,

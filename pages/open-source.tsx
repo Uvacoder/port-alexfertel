@@ -20,23 +20,28 @@ export async function getStaticProps() {
     ),
   ]);
 
+  const contributions = aggregateContributionChunks(
+    contributionChunks.map((chunk) => chunk.data.user.contributionsCollection)
+  );
+
+  const pullRequests = userInfo.data.search.edges.map(
+    (edge: { node: any }) => edge.node
+  );
+
   return {
     props: {
-      contributions: aggregateContributionChunks(
-        contributionChunks.map(
-          (chunk) => chunk.data.user.contributionsCollection
-        )
-      ),
+      contributions,
       userInfo: userInfo.data.user,
+      pullRequests,
     },
     revalidate: 60,
   };
 }
 
-const OpenSource = ({ contributions, userInfo }) => {
+const OpenSource = ({ contributions, userInfo, pullRequests }) => {
   console.log(userInfo);
+  console.log(pullRequests);
 
-  const pullRequests = userInfo.pullRequests.nodes;
   const stargazerCount = userInfo.repositoriesContributedTo.nodes.reduce(
     (sum: number, repo: { stargazerCount: number }) =>
       sum + repo.stargazerCount,
@@ -103,20 +108,22 @@ const OpenSource = ({ contributions, userInfo }) => {
                 <p className="pl-2 text-coolGray-700">Contributions:</p>
               </div>
               <p>
-                <span className="text-blue-500">{contributions}</span>*
+                <span className="text-blue-500">{contributions}</span>
               </p>
             </div>
           </div>
         </div>
 
-        <div className="pt-10 text-left grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4 text-gray-700 dark:text-coolGray-100">
+        <div className="pt-4 text-left grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4 text-gray-700 dark:text-coolGray-100">
           <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
             <div className="w-full p-6 justify-between items-center text-xl">
               <h2 className="font-pacifico text-xl text-blue-500">
                 Pull Requests
               </h2>
               {pullRequests.map((pr) => (
-                <div key={pr.title}>{pr.title}</div>
+                <p key={pr.id} className="text-sm">
+                  {pr.title}
+                </p>
               ))}
             </div>
           </div>
