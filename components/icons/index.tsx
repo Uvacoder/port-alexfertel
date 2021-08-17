@@ -5,3 +5,5 @@ export { ArrowDownIcon } from "./ArrowDownIcon";
 export { StarIcon } from "./StarIcon";
 export { InfoIcon } from "./InfoIcon";
 export { BookIcon } from "./BookIcon";
+export { PullRequestIcon } from "./PullRequestIcon";
+export { PullRequestMergedIcon } from "./PullRequestMergedIcon";

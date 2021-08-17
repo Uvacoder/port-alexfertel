@@ -7,7 +7,9 @@ import {
   DateRange,
   getYearRangesSinceJoining,
 } from "../lib/utils";
-import { PullRequestIcon } from "../components/icons/PullRequestIcon";
+import { PullRequestIcon } from "../components/icons";
+import PullRequestList from "../components/PullRequestList";
+import FancyLink from "../components/global/FancyLink";
 
 export async function getStaticProps() {
   const token = process.env.GITHUB_TOKEN;
@@ -24,9 +26,10 @@ export async function getStaticProps() {
     contributionChunks.map((chunk) => chunk.data.user.contributionsCollection)
   );
 
-  const pullRequests = userInfo.data.search.edges.map(
-    (edge: { node: any }) => edge.node
-  );
+  const pullRequests = userInfo.data.search.edges
+    .map((edge: { node: any }) => edge.node)
+    .filter((pr: { state: string }) => ["MERGED", "OPEN"].includes(pr.state))
+    .slice(0, 6);
 
   return {
     props: {
@@ -58,22 +61,15 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
 
         <div className="items-center">
           <p className="pt-6 text-2xl text-gray-700 dark:text-coolGray-300 sm:max-w-lg m-auto">
-            I love contributing to open source! If you want know more check out
-            my{" "}
-            <a
-              href="https://github.com/alexfertel"
-              rel="noopener noreferrer"
-              className="custom-underline inline-block transition-all transform hover:scale-[1.05] duration-500 ease-out text-transparent font-semibold bg-clip-text bg-gradient-to-r from-red-500 to-blue-500"
-            >
-              GitHub
-            </a>
-            .
+            I love contributing to open source! If you want to know more, check
+            out my{" "}
+            <FancyLink href="https://github.com/alexfertel">GitHub</FancyLink>.
           </p>
         </div>
 
         <div className="pt-10 grid grid-cols-1 lg:grid-cols-3 lg:gap-x-4 gap-y-2">
           <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
-            <div className="flex w-full p-4 lg:p-6 justify-between items-center text-lg lg:text-xl">
+            <div className="flex w-full p-4 lg:p-5 justify-between items-center text-lg lg:text-xl">
               <div className="flex items-center">
                 <StarIcon className="h-6 w-6 text-blue-500" />
 
@@ -86,49 +82,36 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
           </div>
 
           <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
-            <div className="flex w-full p-4 lg:p-6 justify-between items-center text-lg lg:text-xl">
+            <div className="flex w-full p-4 lg:p-5 justify-between items-center text-lg lg:text-xl">
               <div className="flex items-center">
                 <PullRequestIcon className="h-6 w-6 text-blue-500" />
 
                 <p className="pl-2 text-coolGray-700">Pull Requests:</p>
               </div>
-              <p>
-                <span className="text-blue-500">
-                  {userInfo.pullRequests.totalCount}
-                </span>
+              <p className="text-blue-500">
+                {userInfo.pullRequests.totalCount}
               </p>
             </div>
           </div>
 
           <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
-            <div className="flex w-full p-4 lg:p-6 justify-between items-center text-lg lg:text-xl">
+            <div className="flex w-full p-4 lg:p-5 justify-between items-center text-lg lg:text-xl">
               <div className="flex items-center">
                 <BookIcon className="h-6 w-6 text-blue-500" />
 
                 <p className="pl-2 text-coolGray-700">Contributions:</p>
               </div>
-              <p>
-                <span className="text-blue-500">{contributions}</span>
-              </p>
+              <p className="text-blue-500">{contributions}</p>
             </div>
           </div>
         </div>
 
         <div className="pt-4 text-left grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4 text-gray-700 dark:text-coolGray-100">
           <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
-            <div className="w-full p-6 justify-between items-center text-xl">
-              <h2 className="font-pacifico text-xl text-blue-500">
-                Pull Requests
-              </h2>
-              {pullRequests.map((pr) => (
-                <p key={pr.id} className="text-sm">
-                  {pr.title}
-                </p>
-              ))}
-            </div>
+            <PullRequestList prs={pullRequests} />
           </div>
           <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
-            <div className="w-full p-6 justify-between items-center text-xl">
+            <div className="w-full p-5 justify-between items-center text-xl">
               <h2 className="font-pacifico text-xl text-blue-500">Stats</h2>
             </div>
           </div>

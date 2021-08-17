@@ -5,6 +5,7 @@ import Navigation from "../components/global/Navigation";
 import Link from "next/link";
 import { ArrowDownIcon } from "../components/icons";
 import AnimatedText from "../components/global/AnimatedText";
+import BackToTop from "../components/global/BackToTop";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       >
         <div className="relative flex flex-col items-center flex-1 text-gray-700 dark:text-coolGray-100">
           <Navigation />
+          <BackToTop />
 
           <main className="relative flex justify-center w-full h-full px-4 sm:px-16 items-center">
             <motion.h1

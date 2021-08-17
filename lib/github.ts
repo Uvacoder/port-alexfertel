@@ -1,44 +1,6 @@
 import axios from "axios";
 import { DateRange } from "./utils";
 
-// user(login: "alexfertel") {
-//     name
-//     login
-//     contributionsCollection(from: 2016, to: now) {
-//       totalIssueContributions
-//       totalRepositoryContributions
-//       totalPullRequestContributions
-//       totalPullRequestReviewContributions
-//       totalCommitContributions
-//     }
-//     repositoriesContributedTo(first: 100, contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]) {
-//       totalCount
-//       nodes {
-//         nameWithOwner
-//         stargazerCount
-//       }
-//     }
-//     pullRequests(first: 10, orderBy: {direction: DESC, field: CREATED_AT}) {
-//       totalCount
-//       nodes {
-//         title
-//         state
-//         baseRepository {
-//           stargazerCount
-//           description
-//           nameWithOwner
-//           url
-//           forks {
-//             totalCount
-//           }
-//         }
-//       }
-//     }
-//     followers {
-//       totalCount
-//     }
-//   }
-
 const fetchRepoCount = (token: string) =>
   axios({
     method: "get",
@@ -110,7 +72,7 @@ query {
       totalCount
     }
   }
-  search(first: 10, type: ISSUE, query: "is:pr author:alexfertel archived:false sort:updated-desc is:public") {
+  search(first: 50, type: ISSUE, query: "is:pr author:alexfertel archived:false sort:updated-desc is:public") {
     edges {
       node {
         ... on PullRequest {
