@@ -13,7 +13,7 @@ const FancyLink = ({ children, className, ...props }: FancyLinkProps) => (
     {...props}
     rel="noopener noreferrer"
     className={classNames(
-      "custom-underline inline-block transition-all transform hover:scale-[1.05] duration-500 ease-out text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-blue-500",
+      "custom-underline inline-block transition-all transform hover:scale-[1.05] duration-500 ease-out text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-500",
       className
     )}
   >

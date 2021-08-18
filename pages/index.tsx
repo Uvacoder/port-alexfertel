@@ -41,7 +41,7 @@ const Home = () => {
                   hidden: { opacity: 0 },
                   visible: { opacity: 1 },
                 }}
-                className="text-transparent bg-clip-text bg-gradient-to-br from-red-500 to-blue-500"
+                className="text-transparent bg-clip-text bg-gradient-to-br from-red-500 to-amber-500"
               >
                 Alex
               </motion.span>

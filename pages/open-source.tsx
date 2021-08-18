@@ -77,12 +77,12 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
           <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
             <div className="flex w-full p-4 lg:p-5 justify-between items-center text-lg lg:text-xl">
               <div className="flex items-center">
-                <StarIcon className="h-6 w-6 text-blue-500" />
+                <StarIcon className="h-6 w-6 text-amber-500" />
 
                 <p className="pl-2 text-coolGray-700">Stargazers:</p>
               </div>
               <p>
-                <span className="text-blue-500">{stargazerCount}</span>*
+                <span className="text-amber-500">{stargazerCount}</span>*
               </p>
             </div>
           </div>
@@ -90,11 +90,11 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
           <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
             <div className="flex w-full p-4 lg:p-5 justify-between items-center text-lg lg:text-xl">
               <div className="flex items-center">
-                <PullRequestIcon className="h-6 w-6 text-blue-500" />
+                <PullRequestIcon className="h-6 w-6 text-amber-500" />
 
                 <p className="pl-2 text-coolGray-700">Pull Requests:</p>
               </div>
-              <p className="text-blue-500">
+              <p className="text-amber-500">
                 {userInfo.pullRequests.totalCount}
               </p>
             </div>
@@ -103,11 +103,11 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
           <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
             <div className="flex w-full p-4 lg:p-5 justify-between items-center text-lg lg:text-xl">
               <div className="flex items-center">
-                <BookIcon className="h-6 w-6 text-blue-500" />
+                <BookIcon className="h-6 w-6 text-amber-500" />
 
                 <p className="pl-2 text-coolGray-700">Contributions:</p>
               </div>
-              <p className="text-blue-500">{contributions}</p>
+              <p className="text-amber-500">{contributions}</p>
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
           <div className="flex col-span-2 px-4 bg-gray-50 shadow-sm rounded-md">
             <div className="w-full p-5 justify-between items-center text-xl">
               <div className="text-center">
-                <h2 className="font-pacifico font-normal text-xl text-blue-500 leading-8">
+                <h2 className="font-pacifico font-normal text-xl text-amber-500 leading-8">
                   Stats
                 </h2>
               </div>
