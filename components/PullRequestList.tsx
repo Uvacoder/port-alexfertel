@@ -1,6 +1,7 @@
 import { classNames } from "../lib/class-names";
 import FancyLink from "./global/FancyLink";
 import { PullRequestIcon, PullRequestMergedIcon, StarIcon } from "./icons";
+import { ForkIcon } from "./icons/ForkIcon";
 
 interface IRepository {
   nameWithOwner: string;
@@ -33,18 +34,21 @@ const PullRequest = ({ pr }) => {
           <FancyLink
             href={pr.baseRepository.url}
             title={pr.baseRepository.description}
-            className="ml-2 text-lg"
+            className="ml-2 font-semibold text-lg"
           >
             {pr.baseRepository.nameWithOwner}
           </FancyLink>
         </div>
         <div className="flex items-center text-red-500">
-          <p className="text-sm">{pr.baseRepository.stargazerCount}</p>
+          <p className="text-base">{pr.baseRepository.stargazerCount}</p>
           <StarIcon className="pl-1 h-5 w-5" />
+
+          <p className="pl-2 text-base">{pr.baseRepository.forks.totalCount}</p>
+          <ForkIcon className="pl-1 h-5 w-5" />
         </div>
       </div>
       <div>
-        <p className="pl-6 pt-1 text-base opacity-90 max-w-sm">{pr.title}</p>
+        <p className="pl-6 pt-1 text-base opacity-75 max-w-sm">{pr.title}</p>
       </div>
     </div>
   );

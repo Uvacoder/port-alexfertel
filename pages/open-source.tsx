@@ -63,7 +63,13 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
           <p className="pt-6 text-2xl text-gray-700 dark:text-coolGray-300 sm:max-w-lg m-auto">
             I love contributing to open source! If you want to know more, check
             out my{" "}
-            <FancyLink href="https://github.com/alexfertel">GitHub</FancyLink>.
+            <FancyLink
+              href="https://github.com/alexfertel"
+              className="font-semibold"
+            >
+              GitHub
+            </FancyLink>
+            .
           </p>
         </div>
 
@@ -110,9 +116,20 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
           <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
             <PullRequestList prs={pullRequests} />
           </div>
-          <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
+          <div className="flex px-4 bg-gray-50 shadow-sm rounded-md">
             <div className="w-full p-5 justify-between items-center text-xl">
-              <h2 className="font-pacifico text-xl text-blue-500">Stats</h2>
+              <div className="text-center">
+                <h2 className="font-pacifico font-normal text-xl text-blue-500 leading-8">
+                  Stats
+                </h2>
+              </div>
+
+              <div className="pt-3 flex flex-col gap-y-2">
+                <div className="pt-1 flex justify-between items-center">
+                  <p className="text-base">Contributed to: </p>
+                  <p className="text-base">number</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

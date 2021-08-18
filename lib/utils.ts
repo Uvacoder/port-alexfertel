@@ -8,8 +8,6 @@ interface Contributions {
 
 export const aggregateContributionChunks = (chunks: Contributions[]) =>
   chunks.reduce((acc: number, chunk: Contributions) => {
-    console.log(chunk);
-
     const aggregation =
       chunk.totalCommitContributions +
       chunk.totalPullRequestReviewContributions +
