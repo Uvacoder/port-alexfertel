@@ -28,8 +28,8 @@ const PullRequest = ({ pr }) => {
 
   return (
     <div className="">
-      <div title={title} className="pt-1 flex justify-between">
-        <div className="flex items-center">
+      <div className="pt-1 flex justify-between">
+        <div title={title} className="flex items-center">
           <Icon className={classNames("w-4 h-4", color)} />
           <FancyLink
             href={pr.baseRepository.url}
