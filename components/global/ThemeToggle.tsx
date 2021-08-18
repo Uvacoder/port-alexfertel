@@ -18,7 +18,7 @@ export default function ThemeToggle() {
       checked={isDarkTheme}
       onChange={() => setTheme(isDarkTheme ? "light" : "dark")}
       className="text-amber-500 dark:text-gray-300
-    focus:outline-none focus-visible:outline-none rounded-full focus-visible:ring-2 
+    focus:outline-none focus-visible:outline-none rounded-full focus-visible:ring-2
     focus-visible:ring-amber-500 dark:focus-visible:ring-gray-300 transition-all hover:scale-110 duration-100 ease-out"
     >
       <span className="sr-only">Toggle theme</span>
