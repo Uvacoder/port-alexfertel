@@ -17,9 +17,9 @@ export default function ThemeToggle() {
       aria-label="Toggle Dark Mode"
       checked={isDarkTheme}
       onChange={() => setTheme(isDarkTheme ? "light" : "dark")}
-      className="text-red-500 dark:text-gray-300
+      className="text-amber-500 dark:text-gray-300
     focus:outline-none focus-visible:outline-none rounded-full focus-visible:ring-2 
-    focus-visible:ring-red-500 dark:focus-visible:ring-gray-300 transition-all hover:scale-110 duration-100 ease-out"
+    focus-visible:ring-amber-500 dark:focus-visible:ring-gray-300 transition-all hover:scale-110 duration-100 ease-out"
     >
       <span className="sr-only">Toggle theme</span>
       <svg
