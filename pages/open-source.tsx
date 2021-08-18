@@ -112,11 +112,8 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
           </div>
         </div>
 
-        <div className="pt-4 text-left grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4 text-gray-700 dark:text-coolGray-100">
-          <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
-            <PullRequestList prs={pullRequests} />
-          </div>
-          <div className="flex px-4 bg-gray-50 shadow-sm rounded-md">
+        <div className="pt-4 text-left grid grid-cols-1 lg:grid-cols-6 lg:gap-x-4 text-gray-700 dark:text-coolGray-100">
+          <div className="flex col-span-2 px-4 bg-gray-50 shadow-sm rounded-md">
             <div className="w-full p-5 justify-between items-center text-xl">
               <div className="text-center">
                 <h2 className="font-pacifico font-normal text-xl text-blue-500 leading-8">
@@ -131,6 +128,10 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="flex col-span-4 items-center bg-gray-50 shadow-sm rounded-md">
+            <PullRequestList prs={pullRequests} />
           </div>
         </div>
       </div>
