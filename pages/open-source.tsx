@@ -74,12 +74,14 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
         </div>
 
         <div className="pt-10 grid grid-cols-1 lg:grid-cols-3 lg:gap-x-4 gap-y-2">
-          <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
+          <div className="flex items-center bg-gray-50 border border-gray-200 dark:border-gray-700 dark:bg-gray-800 shadow-sm rounded-md">
             <div className="flex w-full p-4 lg:p-5 justify-between items-center text-lg lg:text-xl">
               <div className="flex items-center">
                 <StarIcon className="h-6 w-6 text-amber-500" />
 
-                <p className="pl-2 text-coolGray-700">Stargazers:</p>
+                <p className="pl-2 text-gray-700 dark:text-coolGray-100">
+                  Stargazers:
+                </p>
               </div>
               <p>
                 <span className="text-amber-500">{stargazerCount}</span>*
@@ -87,12 +89,14 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
             </div>
           </div>
 
-          <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
+          <div className="flex items-center bg-gray-50 border border-gray-200 dark:border-gray-700 dark:bg-gray-800 shadow-sm rounded-md">
             <div className="flex w-full p-4 lg:p-5 justify-between items-center text-lg lg:text-xl">
               <div className="flex items-center">
                 <PullRequestIcon className="h-6 w-6 text-amber-500" />
 
-                <p className="pl-2 text-coolGray-700">Pull Requests:</p>
+                <p className="pl-2 text-gray-700 dark:text-coolGray-100">
+                  Pull Requests:
+                </p>
               </div>
               <p className="text-amber-500">
                 {userInfo.pullRequests.totalCount}
@@ -100,12 +104,14 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
             </div>
           </div>
 
-          <div className="flex items-center bg-gray-50 shadow-sm rounded-md">
+          <div className="flex items-center bg-gray-50 border border-gray-200 dark:border-gray-700 dark:bg-gray-800 shadow-sm rounded-md">
             <div className="flex w-full p-4 lg:p-5 justify-between items-center text-lg lg:text-xl">
               <div className="flex items-center">
                 <BookIcon className="h-6 w-6 text-amber-500" />
 
-                <p className="pl-2 text-coolGray-700">Contributions:</p>
+                <p className="pl-2 text-gray-700 dark:text-coolGray-100">
+                  Contributions:
+                </p>
               </div>
               <p className="text-amber-500">{contributions}</p>
             </div>
@@ -113,7 +119,7 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
         </div>
 
         <div className="pt-4 text-left grid grid-cols-1 lg:grid-cols-6 lg:gap-x-4 text-gray-700 dark:text-coolGray-100">
-          <div className="flex col-span-2 px-4 bg-gray-50 shadow-sm rounded-md">
+          <div className="flex col-span-2 px-4 bg-gray-50 border border-gray-200 dark:border-gray-700 dark:bg-gray-800 shadow-sm rounded-md">
             <div className="w-full p-5 justify-between items-center text-xl">
               <div className="text-center">
                 <h2 className="font-pacifico font-normal text-xl text-amber-500 leading-8">
@@ -130,7 +136,7 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
             </div>
           </div>
 
-          <div className="flex col-span-4 items-center bg-gray-50 shadow-sm rounded-md">
+          <div className="flex col-span-4 items-center bg-gray-50 border border-gray-200 dark:border-gray-700 dark:bg-gray-800 shadow-sm rounded-md">
             <PullRequestList prs={pullRequests} />
           </div>
         </div>
