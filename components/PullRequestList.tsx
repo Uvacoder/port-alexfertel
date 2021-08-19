@@ -7,7 +7,6 @@ interface IRepository {
   nameWithOwner: string;
   description: string;
   stargazerCount: number;
-  url: string;
   forks: {
     totalCount: number;
   };
@@ -16,6 +15,7 @@ interface IRepository {
 interface IPullRequest {
   id: string;
   title: string;
+  url: string;
   state: "MERGED" | "OPEN" | "CLOSED";
   baseRepository: IRepository;
 }
@@ -32,7 +32,7 @@ const PullRequest = ({ pr }) => {
         <div title={title} className="flex items-center">
           <Icon className={classNames("w-4 h-4", color)} />
           <FancyLink
-            href={pr.baseRepository.url}
+            href={pr.url}
             title={pr.baseRepository.description}
             className="ml-2 font-semibold text-lg"
           >

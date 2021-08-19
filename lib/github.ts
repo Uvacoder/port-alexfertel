@@ -79,11 +79,11 @@ query {
           title
           state
           id
+          url
           baseRepository {
             stargazerCount
             description
             nameWithOwner
-            url
             forks {
               totalCount
             }
