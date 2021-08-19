@@ -1,4 +1,7 @@
+import * as React from "react";
+import Image from "next/image";
 import { classNames } from "../lib/class-names";
+import microlinkApi from "../lib/microlink";
 import FancyLink from "./global/FancyLink";
 import { PullRequestIcon, PullRequestMergedIcon, StarIcon } from "./icons";
 import { ForkIcon } from "./icons/ForkIcon";
@@ -26,6 +29,24 @@ const PullRequest = ({ pr }) => {
       ? [PullRequestMergedIcon, "text-indigo-500", "Merged pull request"]
       : [PullRequestIcon, "text-green-500", "Open pull request"];
 
+  const [isMounted, setIsMounted] = React.useState(false);
+  const [openGraphImage, setOpenGraphImage] = React.useState<string>();
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  React.useEffect(() => {
+    if (isMounted) {
+      const fetchOpenGraphImage = async () =>
+        microlinkApi.fetchOpenGraphImage(pr.url);
+
+      fetchOpenGraphImage().then((response) =>
+        setOpenGraphImage(response.data.image.url)
+      );
+    }
+  });
+
   return (
     <div className="">
       <div className="pt-1 flex justify-between">
@@ -49,6 +70,10 @@ const PullRequest = ({ pr }) => {
       </div>
       <div>
         <p className="pl-6 pt-1 text-base opacity-75 max-w-sm">{pr.title}</p>
+
+        {openGraphImage && (
+          <Image width={200} height={100} src={openGraphImage} alt={pr.title} />
+        )}
       </div>
     </div>
   );

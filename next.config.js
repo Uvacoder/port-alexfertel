@@ -3,6 +3,9 @@ module.exports = {
     strictPostcssConfiguration: true,
   },
   reactStrictMode: true,
+  images: {
+    domains: ["opengraph.githubassets.com"],
+  },
   async headers() {
     return [
       {
