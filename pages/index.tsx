@@ -30,10 +30,10 @@ const Home = () => {
                 hidden: { opacity: 0 },
                 visible: {
                   opacity: 1,
-                  transition: { delay: 0.5, staggerChildren: 0.07 },
+                  transition: { delay: 0.5, staggerChildren: 0.085 },
                 },
               }}
-              className="text-xl font-pacifico sm:text-2xl md:text-3xl lg:text-5xl"
+              className="text-xl font-lora sm:text-2xl md:text-3xl lg:text-5xl"
             >
               <AnimatedText text="Hello, I'm" />{" "}
               <motion.span

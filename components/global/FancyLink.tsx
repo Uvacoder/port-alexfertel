@@ -14,7 +14,7 @@ const FancyLink = ({ children, className, ...props }: FancyLinkProps) => (
     rel="noopener noreferrer"
     target="_blank"
     className={classNames(
-      "custom-underline inline-block transition-all transform hover:scale-[1.05] duration-500 ease-out text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-500",
+      "font-lora custom-underline inline-block transition-all transform hover:scale-[1.05] duration-500 ease-out text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-500",
       className
     )}
   >

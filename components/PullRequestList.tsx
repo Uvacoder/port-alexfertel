@@ -55,7 +55,7 @@ const PullRequest = ({ pr }) => {
           <FancyLink
             href={pr.url}
             title={pr.baseRepository.description}
-            className="ml-2 font-semibold text-lg"
+            className="ml-2 text-lg"
           >
             {pr.baseRepository.nameWithOwner}
           </FancyLink>
@@ -85,7 +85,7 @@ const PullRequestList = ({ prs }) => (
       <FancyLink
         href="https://github.com/pulls?q=is%3Apr+is%3Aopen+author%3Aalexfertel+archived%3Afalse+sort%3Aupdated-desc"
         title="https://github.com/pulls?q=is%3Apr+is%3Aopen+author%3Aalexfertel+archived%3Afalse+sort%3Aupdated-desc"
-        className="text-xl font-pacifico font-normal leading-8 text-center"
+        className="text-2xl font-lora font-semibold leading-8 text-center"
       >
         Pull requests
       </FancyLink>

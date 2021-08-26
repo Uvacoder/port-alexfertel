@@ -11,6 +11,7 @@ module.exports = {
       fontFamily: {
         sans: ["Quicksand", ...defaultTheme.fontFamily.sans],
         pacifico: ["Pacifico"],
+        lora: ["Lora"],
       },
     },
   },

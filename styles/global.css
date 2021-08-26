@@ -80,4 +80,11 @@ html {
   font-weight: 400;
   src: url(/fonts/pacifico-v17-latin-regular.woff2) format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 }
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 500;
+  src: url(/fonts/lora-v17-latin-500italic.woff2) format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
 

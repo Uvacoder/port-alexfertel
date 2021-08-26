@@ -55,7 +55,7 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
     <div className="relative inset-0 flex min-h-screen">
       <Navigation />
       <div className="max-w-xs sm:max-w-xl lg:max-w-5xl mx-auto flex flex-1 flex-col text-center">
-        <h1 className="pt-20 text-5xl text-gray-700 dark:text-coolGray-100 font-pacifico">
+        <h1 className="pt-20 text-5xl text-gray-700 dark:text-coolGray-100 font-lora">
           Open Source
         </h1>
 
@@ -122,7 +122,7 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
           <div className="flex col-span-2 px-4 bg-gray-50 border border-gray-200 dark:border-gray-700 dark:bg-gray-800 shadow-sm rounded-md">
             <div className="w-full p-5 justify-between items-center text-xl">
               <div className="text-center">
-                <h2 className="font-pacifico font-normal text-xl text-amber-500 leading-8">
+                <h2 className="font-lora font-normal text-xl text-amber-500 leading-8">
                   Stats
                 </h2>
               </div>
