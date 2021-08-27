@@ -1,1 +1,2 @@
 User-agent: * Disallow: 
+Sitemap: https://alexfertel.vercel.app/sitemap.txt
