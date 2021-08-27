@@ -5,6 +5,8 @@ import microlinkApi from "../lib/microlink";
 import FancyLink from "./global/FancyLink";
 import { PullRequestIcon, PullRequestMergedIcon, StarIcon } from "./icons";
 import { ForkIcon } from "./icons/ForkIcon";
+import * as HoverCard from "@radix-ui/react-hover-card";
+import { Transition } from "@headlessui/react";
 
 interface IRepository {
   nameWithOwner: string;
@@ -31,6 +33,7 @@ const PullRequest = ({ pr }) => {
 
   const [isMounted, setIsMounted] = React.useState(false);
   const [openGraphImage, setOpenGraphImage] = React.useState<string>();
+  const [isOpen, setIsOpen] = React.useState(false);
 
   React.useEffect(() => {
     setIsMounted(true);
@@ -48,17 +51,50 @@ const PullRequest = ({ pr }) => {
   });
 
   return (
-    <div className="">
+    <div>
       <div className="pt-1 flex justify-between">
         <div title={title} className="flex items-center">
           <Icon className={classNames("w-4 h-4", color)} />
-          <FancyLink
-            href={pr.url}
-            title={pr.baseRepository.description}
-            className="ml-2 text-lg"
+
+          <HoverCard.Root
+            openDelay={50}
+            onOpenChange={(open) => {
+              setIsOpen(open);
+            }}
           >
-            {pr.baseRepository.nameWithOwner}
-          </FancyLink>
+            <HoverCard.Trigger
+              as={FancyLink}
+              href={pr.url}
+              title={pr.baseRepository.description}
+              className="ml-2 text-lg"
+            >
+              {pr.baseRepository.nameWithOwner}
+            </HoverCard.Trigger>
+
+            <HoverCard.Content side="top">
+              <Transition
+                show={isOpen}
+                appear
+                enter="transform transition duration-300 origin-bottom ease-out"
+                enterFrom="opacity-0 translate-y-2 scale-0"
+                enterTo="opacity-100 translate-y-0 scale-100"
+                className="shadow-xl rounded-xl"
+              >
+                <a
+                  href={pr.url}
+                  className="block p-1 bg-white border border-transparent shadow-sm rounded-lg hover:border-amber-500"
+                >
+                  <Image
+                    width={500}
+                    height={250}
+                    src={openGraphImage}
+                    alt={pr.title}
+                    layout="fixed"
+                  />
+                </a>
+              </Transition>
+            </HoverCard.Content>
+          </HoverCard.Root>
         </div>
         <div className="flex items-center text-red-500">
           <p className="text-base">{pr.baseRepository.stargazerCount}</p>
@@ -70,10 +106,6 @@ const PullRequest = ({ pr }) => {
       </div>
       <div>
         <p className="pl-6 pt-1 text-base opacity-75 max-w-sm">{pr.title}</p>
-
-        {openGraphImage && (
-          <Image width={200} height={100} src={openGraphImage} alt={pr.title} />
-        )}
       </div>
     </div>
   );

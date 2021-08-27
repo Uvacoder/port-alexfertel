@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.2.0",
+    "@radix-ui/react-hover-card": "^0.0.4",
     "axios": "^0.21.1",
     "framer-motion": "^4.1.17",
     "next": "latest",
