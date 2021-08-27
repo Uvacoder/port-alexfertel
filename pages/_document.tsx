@@ -47,6 +47,11 @@ class MyDocument extends Document {
           <meta property="og:site_name" content="Lee Robinson" />
           <meta property="og:description" content={meta.description} />
           <meta property="og:title" content={meta.title} />
+
+          <meta
+            name="google-site-verification"
+            content="ehkgub95G0HGA3ym6sKTkPafYi13C27s50Tssb6-H10"
+          />
         </Head>
         <body className="antialiased bg-gray-100 dark:bg-gray-900">
           <Main />
