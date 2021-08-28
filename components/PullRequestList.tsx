@@ -57,7 +57,7 @@ const PullRequest = ({ pr }) => {
           <Icon className={classNames("w-4 h-4", color)} />
 
           <HoverCard.Root
-            openDelay={50}
+            openDelay={100}
             onOpenChange={(open) => {
               setIsOpen(open);
             }}
@@ -73,7 +73,7 @@ const PullRequest = ({ pr }) => {
 
             <HoverCard.Content side="top">
               <Transition
-                show={isOpen}
+                show={isOpen && Boolean(openGraphImage)}
                 appear
                 enter="transform transition duration-300 origin-bottom ease-out"
                 enterFrom="opacity-0 translate-y-2 scale-0"
