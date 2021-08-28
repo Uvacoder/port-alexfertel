@@ -10,6 +10,7 @@ import {
 import { PullRequestIcon } from "../components/icons";
 import PullRequestList from "../components/PullRequestList";
 import FancyLink from "../components/global/FancyLink";
+import RepoList from "../components/RepoList";
 
 export async function getStaticProps() {
   const token = process.env.GITHUB_TOKEN;
@@ -119,24 +120,11 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
         </div>
 
         <div className="pt-4 text-left grid grid-cols-1 lg:grid-cols-6 lg:gap-x-4 text-gray-700 dark:text-coolGray-100">
-          <div className="flex col-span-2 px-4 bg-gray-50 border border-gray-200 dark:border-gray-700 dark:bg-gray-800 shadow-sm rounded-md">
-            <div className="w-full p-5 justify-between items-center text-xl">
-              <div className="text-center">
-                <h2 className="font-lora font-normal text-xl text-amber-500 leading-8">
-                  Stats
-                </h2>
-              </div>
-
-              <div className="pt-3 flex flex-col gap-y-2">
-                <div className="pt-1 flex justify-between items-center">
-                  <p className="text-base">Contributed to: </p>
-                  <p className="text-base">number</p>
-                </div>
-              </div>
-            </div>
+          <div className="flex col-span-3 px-4 bg-gray-50 border border-gray-200 dark:border-gray-700 dark:bg-gray-800 shadow-sm rounded-md">
+            <RepoList />
           </div>
 
-          <div className="flex col-span-4 items-center bg-gray-50 border border-gray-200 dark:border-gray-700 dark:bg-gray-800 shadow-sm rounded-md">
+          <div className="flex col-span-3 items-center bg-gray-50 border border-gray-200 dark:border-gray-700 dark:bg-gray-800 shadow-sm rounded-md">
             <PullRequestList prs={pullRequests} />
           </div>
         </div>

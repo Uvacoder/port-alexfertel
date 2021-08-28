@@ -4,7 +4,10 @@ module.exports = {
   },
   reactStrictMode: true,
   images: {
-    domains: ["opengraph.githubassets.com"],
+    domains: [
+      "opengraph.githubassets.com",
+      "repository-images.githubusercontent.com",
+    ],
   },
   async headers() {
     return [
