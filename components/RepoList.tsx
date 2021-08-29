@@ -15,6 +15,8 @@ interface IRepository {
   forks: number;
 }
 
+const formatThousand = (n: number): string => `${Math.round(n / 100) / 10}k`;
+
 const reposILove: IRepository[] = [
   {
     nameWithOwner: "rust-analyzer/rust-analyzer",
@@ -107,6 +109,7 @@ const Repo = ({ repo }) => {
                     src={openGraphImage}
                     alt={repo.title}
                     layout="fixed"
+                    priority
                   />
                 </a>
               </Transition>
@@ -114,7 +117,7 @@ const Repo = ({ repo }) => {
           </HoverCard.Root>
         </div>
         <div className="flex items-center text-red-500">
-          <p className="text-base">{repo.stargazerCount}</p>
+          <p className="text-base">{formatThousand(repo.stargazerCount)}</p>
           <StarIcon className="pl-1 h-5 w-5" />
 
           <p className="pl-2 text-base">{repo.forks}</p>

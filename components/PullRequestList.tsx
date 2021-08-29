@@ -90,6 +90,7 @@ const PullRequest = ({ pr }) => {
                     src={openGraphImage}
                     alt={pr.title}
                     layout="fixed"
+                    priority
                   />
                 </a>
               </Transition>
