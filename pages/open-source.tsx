@@ -85,7 +85,7 @@ const OpenSource = ({ contributions, userInfo, pullRequests }) => {
                 </p>
               </div>
               <p>
-                <span className="text-amber-500">{stargazerCount}</span>*
+                <span className="text-amber-500">{stargazerCount}</span>
               </p>
             </div>
           </div>
