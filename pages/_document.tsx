@@ -44,7 +44,10 @@ class MyDocument extends Document {
           <meta name="robots" content="follow, index" />
           <meta content={meta.description} name="description" />
           <meta property="og:type" content={meta.type} />
-          <meta property="og:site_name" content="Lee Robinson" />
+          <meta
+            property="og:site_name"
+            content="Alexander Antonio González Fertel"
+          />
           <meta property="og:description" content={meta.description} />
           <meta property="og:title" content={meta.title} />
 
