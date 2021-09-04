@@ -81,7 +81,7 @@ const PullRequest = ({ pr }) => {
             </HoverCard.Content>
           </HoverCard.Root>
         </div>
-        <div className="flex items-center text-red-500">
+        <div className="flex items-center text-red-600 dark:text-red-400">
           <p className="text-base">{pr.baseRepository.stargazerCount}</p>
           <StarIcon className="pl-1 h-5 w-5" />
 
