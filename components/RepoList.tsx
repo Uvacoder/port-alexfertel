@@ -1,6 +1,5 @@
 import * as React from "react";
 import Image from "next/image";
-import microlinkApi from "../lib/microlink";
 import FancyLink from "./global/FancyLink";
 import { StarIcon } from "./icons";
 import { ForkIcon } from "./icons/ForkIcon";
@@ -11,6 +10,7 @@ interface IRepository {
   nameWithOwner: string;
   description: string;
   url: string;
+  image_url: string;
   stargazerCount: number;
   forks: number;
 }
@@ -21,6 +21,8 @@ const reposILove: IRepository[] = [
   {
     nameWithOwner: "rust-analyzer/rust-analyzer",
     url: "https://github.com/rust-analyzer/rust-analyzer",
+    image_url:
+      "https://opengraph.githubassets.com/1/rust-analyzer/rust-analyzer",
     description: "A Rust compiler front-end for IDEs",
     stargazerCount: 7100,
     forks: 719,
@@ -28,6 +30,7 @@ const reposILove: IRepository[] = [
   {
     nameWithOwner: "rust-lang/regex",
     url: "https://github.com/rust-lang/regex",
+    image_url: "https://opengraph.githubassets.com/1/rust-lang/regex",
     description: "An implementation of regular expressions for Rust.",
     stargazerCount: 2000,
     forks: 290,
@@ -35,6 +38,7 @@ const reposILove: IRepository[] = [
   {
     nameWithOwner: "starship/starship",
     url: "https://github.com/starship/starship",
+    image_url: "https://opengraph.githubassets.com/1/starship/starship",
     description:
       "The minimal, blazing-fast, and infinitely customizable prompt for any shell!",
     stargazerCount: 18300,
@@ -43,6 +47,7 @@ const reposILove: IRepository[] = [
   {
     nameWithOwner: "vercel/next.js",
     url: "https://github.com/vercel/next.js",
+    image_url: "https://opengraph.githubassets.com/1/vercel/next.js",
     description: "The React Framework",
     stargazerCount: 72500,
     forks: 14000,
@@ -50,24 +55,7 @@ const reposILove: IRepository[] = [
 ];
 
 const Repo = ({ repo }) => {
-  const [isMounted, setIsMounted] = React.useState(false);
-  const [openGraphImage, setOpenGraphImage] = React.useState<string>();
   const [isOpen, setIsOpen] = React.useState(false);
-
-  React.useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  React.useEffect(() => {
-    if (isMounted) {
-      const fetchOpenGraphImage = async () =>
-        microlinkApi.fetchOpenGraphImage(repo.url);
-
-      fetchOpenGraphImage().then((response) =>
-        setOpenGraphImage(response.data.image.url)
-      );
-    }
-  });
 
   return (
     <div>
@@ -90,7 +78,7 @@ const Repo = ({ repo }) => {
 
             <HoverCard.Content side="top">
               <Transition
-                show={isOpen && Boolean(openGraphImage)}
+                show={isOpen}
                 appear
                 enter="transform transition duration-300 origin-bottom ease-out"
                 enterFrom="opacity-0 translate-y-2 scale-0"
@@ -106,10 +94,10 @@ const Repo = ({ repo }) => {
                   <Image
                     width={500}
                     height={250}
-                    src={openGraphImage}
+                    src={repo.image_url}
                     alt={repo.title}
                     layout="fixed"
-                    priority
+                    loading="eager"
                   />
                 </a>
               </Transition>

@@ -80,6 +80,7 @@ query {
           state
           id
           url
+          resourcePath
           baseRepository {
             stargazerCount
             description

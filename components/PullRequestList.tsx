@@ -1,7 +1,6 @@
 import * as React from "react";
 import Image from "next/image";
 import { classNames } from "../lib/class-names";
-import microlinkApi from "../lib/microlink";
 import FancyLink from "./global/FancyLink";
 import { PullRequestIcon, PullRequestMergedIcon, StarIcon } from "./icons";
 import { ForkIcon } from "./icons/ForkIcon";
@@ -21,6 +20,7 @@ interface IPullRequest {
   id: string;
   title: string;
   url: string;
+  resourcePath: string;
   state: "MERGED" | "OPEN" | "CLOSED";
   baseRepository: IRepository;
 }
@@ -31,24 +31,8 @@ const PullRequest = ({ pr }) => {
       ? [PullRequestMergedIcon, "text-indigo-500", "Merged pull request"]
       : [PullRequestIcon, "text-green-500", "Open pull request"];
 
-  const [isMounted, setIsMounted] = React.useState(false);
-  const [openGraphImage, setOpenGraphImage] = React.useState<string>();
   const [isOpen, setIsOpen] = React.useState(false);
-
-  React.useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  React.useEffect(() => {
-    if (isMounted) {
-      const fetchOpenGraphImage = async () =>
-        microlinkApi.fetchOpenGraphImage(pr.url);
-
-      fetchOpenGraphImage().then((response) =>
-        setOpenGraphImage(response.data.image.url)
-      );
-    }
-  });
+  const image_url = `https://opengraph.githubassets.com/1${pr.resourcePath}`;
 
   return (
     <div>
@@ -73,7 +57,7 @@ const PullRequest = ({ pr }) => {
 
             <HoverCard.Content side="top">
               <Transition
-                show={isOpen && Boolean(openGraphImage)}
+                show={isOpen}
                 appear
                 enter="transform transition duration-300 origin-bottom ease-out"
                 enterFrom="opacity-0 translate-y-2 scale-0"
@@ -87,10 +71,10 @@ const PullRequest = ({ pr }) => {
                   <Image
                     width={500}
                     height={250}
-                    src={openGraphImage}
+                    src={image_url}
                     alt={pr.title}
                     layout="fixed"
-                    priority
+                    loading="eager"
                   />
                 </a>
               </Transition>

@@ -60,14 +60,18 @@ const Home = () => {
           </div>
         </div>
       </section>
-      {/*
-            <section
-            id="second-section"
-            className="flex min-h-screen transition-colors duration-75"
-            >
-            <h2>Personal Changelog</h2>
-            </section>
-        */}
+      <section
+        id="second-section"
+        className="flex min-h-screen bg-gradient-to-br from-red-500 to-amber-500 transition-colors duration-75"
+      >
+        <div className="relative flex flex-col items-center flex-1 w-full text-gray-700 dark:text-coolGray-100">
+          <div className="relative flex justify-center w-full h-full px-4 sm:px-16 items-center">
+            <h2 className="inline-block">
+              <AnimatedText text="I am an aspiring generative artist" />
+            </h2>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
