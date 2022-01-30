@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div className="flex flex-col flex-1">
       <Head>
-        <title>Alexander González - UI Developer, Generative Artist.</title>
+        <title>Richard Kimble - Surgeon, Fugitive.</title>
       </Head>
 
       <section
@@ -43,7 +43,7 @@ const Home = () => {
                 }}
                 className="text-transparent bg-clip-text bg-gradient-to-br from-red-500 to-amber-500"
               >
-                Alex
+                Richard
               </motion.span>
               <AnimatedText text="." />
               <br />
