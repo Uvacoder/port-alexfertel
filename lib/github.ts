@@ -13,7 +13,7 @@ const fetchRepoCount = (token: string) =>
 const fetchCommitCount = (token: string) =>
   axios({
     method: "get",
-    url: `https://api.github.com/search/commits?q=author:alexfertel`,
+    url: `https://api.github.com/search/commits?q=author:uvacoder`,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/vnd.github.cloak-preview",
@@ -60,7 +60,7 @@ const fetchUserInfo = (token: string) =>
     data: JSON.stringify({
       query: `
 query {
-  user(login: "alexfertel") {
+  user(login: "uvacoder") {
     repositoriesContributedTo(first: 100, contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]) {
       totalCount
       nodes {
@@ -72,7 +72,7 @@ query {
       totalCount
     }
   }
-  search(first: 50, type: ISSUE, query: "is:pr author:alexfertel archived:false sort:updated-desc is:public") {
+  search(first: 50, type: ISSUE, query: "is:pr author:uvacoder archived:false sort:updated-desc is:public") {
     edges {
       node {
         ... on PullRequest {
